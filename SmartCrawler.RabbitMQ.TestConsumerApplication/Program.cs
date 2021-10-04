@@ -1,8 +1,22 @@
-﻿using RabbitMQ.Client;
+﻿using DnsClient.Internal;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+using SmartCrawler.RabbitMQ.TestConsumerApplication.Workers;
 using SmartCrawler.RabbitMQ.Types;
 using System;
+using System.IO;
 using System.Text;
+using Microsoft.Extensions.Hosting.WindowsServices;
+using System.Configuration;
+using SmartCrawler.RabbitMQ.TestConsumerApplication.Interface;
+using SmartCrawler.DbAccess.MongoDB.Configuration;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 
 namespace SmartCrawler.RabbitMQ.TestConsumerApplication
 {
@@ -10,37 +24,26 @@ namespace SmartCrawler.RabbitMQ.TestConsumerApplication
     {
         static void Main(string[] args)
         {
-            RabbitMQBasicConsumeModel rabbitMQBasicConsumeModel = new RabbitMQBasicConsumeModel();
-            rabbitMQBasicConsumeModel.QueueConfiguration = new QueueConfiguration()
-            {
-                HostName = "localhost",
-                QueueName = "test4",
-                Durable = false,
-                Exclusive = false,
-                AutoDelete = false,
-                Arguments = null
-            };
-
-            rabbitMQBasicConsumeModel.BasicConsumeConfiguration = new BasicConsumeConfiguration()
-            {
-                Queue = "test4",
-                AutoAck = true
-            };
-
-            RabbitMQConsumerComponent.Init(rabbitMQBasicConsumeModel);
-            while (true)
-            {
-                RabbitMQConsumerComponent.BasicConsume(rabbitMQBasicConsumeModel, Consumer_Received); 
-            }
-            
+            CreateHostBuilder(args).Build().Run();
         }
 
-        public static void Consumer_Received(object sender, BasicDeliverEventArgs e)
-        {
-            var body = e.Body.ToArray();
-            var message = Encoding.UTF8.GetString(body);
-            Console.WriteLine(message);
-        }
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+           Host.CreateDefaultBuilder(args)
+               .ConfigureServices((hostContext, services) =>
+               {
+                   var config = new ConfigurationBuilder()
+                                .AddJsonFile("appsettings.json", optional: false)
+                                .Build();
 
+                   string con = config.GetSection("MongoDbSettings").GetSection("ConnectionString").Value;
+
+                   services.Configure<MongoDbSettings>(options =>
+                           {
+                               options.ConnectionString = config.GetSection("MongoDbSettings").GetSection("ConnectionString").Value;
+                               options.Database = config.GetSection("MongoDbSettings").GetSection("Database").Value;
+                           });
+                   services.AddSingleton<IProductDal, ProductMongoDbDal>();
+                   services.AddHostedService<TestWorker>();
+               });
     }
 }

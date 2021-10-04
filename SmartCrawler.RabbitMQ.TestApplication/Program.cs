@@ -32,7 +32,7 @@ namespace SmartCrawler.RabbitMQ.TestPublisherApplication
 
             RabbitMQPublisherComponent.Init(basicPublishModel);
 
-            for (int i = 0; i < 1000000; i++)
+            for (int i = 0; i < 10000000; i++)
             {
                 //Thread.Sleep(200);
                 

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartCrawler", "SmartCrawler\SmartCrawler.csproj", "{F6082487-47B0-4173-87A4-2BC040F650EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartCrawler", "SmartCrawler\SmartCrawler.csproj", "{F6082487-47B0-4173-87A4-2BC040F650EB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FRM", "FRM", "{62150E22-B852-42B1-B758-90B9090A167E}"
 EndProject
@@ -11,13 +11,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Components", "Components", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Queue", "Queue", "{3B34B7DE-F3F6-4081-A45D-6AEE4CF2627B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartCrawler.RabbitMQ", "SmartCrawler.RabbitMQ\SmartCrawler.RabbitMQ.csproj", "{C0AA5A52-AD65-4125-8CCD-DCFB47A4C90D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartCrawler.RabbitMQ", "SmartCrawler.RabbitMQ\SmartCrawler.RabbitMQ.csproj", "{C0AA5A52-AD65-4125-8CCD-DCFB47A4C90D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{F4EB3489-FB6F-458E-ADB6-D5392C2CD7F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartCrawler.RabbitMQ.TestPublisherApplication", "SmartCrawler.RabbitMQ.TestApplication\SmartCrawler.RabbitMQ.TestPublisherApplication.csproj", "{65E278C2-DA2E-43A2-9D2A-B0A8D1D313F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartCrawler.RabbitMQ.TestPublisherApplication", "SmartCrawler.RabbitMQ.TestApplication\SmartCrawler.RabbitMQ.TestPublisherApplication.csproj", "{65E278C2-DA2E-43A2-9D2A-B0A8D1D313F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartCrawler.RabbitMQ.TestConsumerApplication", "SmartCrawler.RabbitMQ.TestConsumerApplication\SmartCrawler.RabbitMQ.TestConsumerApplication.csproj", "{881B4BEA-9FDE-48BE-9E93-48B51645B2CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartCrawler.RabbitMQ.TestConsumerApplication", "SmartCrawler.RabbitMQ.TestConsumerApplication\SmartCrawler.RabbitMQ.TestConsumerApplication.csproj", "{881B4BEA-9FDE-48BE-9E93-48B51645B2CE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DB", "DB", "{7927CBDC-18DF-4F5C-8DE7-1A86F0FC9E69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartCrawler.DbAccess.MongoDB", "SmartCrawler.DbAccess.MongoDB\SmartCrawler.DbAccess.MongoDB.csproj", "{F44964D2-C82A-4A49-84CA-CE34491224AD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +45,10 @@ Global
 		{881B4BEA-9FDE-48BE-9E93-48B51645B2CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{881B4BEA-9FDE-48BE-9E93-48B51645B2CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{881B4BEA-9FDE-48BE-9E93-48B51645B2CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F44964D2-C82A-4A49-84CA-CE34491224AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F44964D2-C82A-4A49-84CA-CE34491224AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F44964D2-C82A-4A49-84CA-CE34491224AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F44964D2-C82A-4A49-84CA-CE34491224AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,6 +59,8 @@ Global
 		{C0AA5A52-AD65-4125-8CCD-DCFB47A4C90D} = {3B34B7DE-F3F6-4081-A45D-6AEE4CF2627B}
 		{65E278C2-DA2E-43A2-9D2A-B0A8D1D313F4} = {F4EB3489-FB6F-458E-ADB6-D5392C2CD7F7}
 		{881B4BEA-9FDE-48BE-9E93-48B51645B2CE} = {F4EB3489-FB6F-458E-ADB6-D5392C2CD7F7}
+		{7927CBDC-18DF-4F5C-8DE7-1A86F0FC9E69} = {D189033D-C49A-4063-8852-A99C7D264757}
+		{F44964D2-C82A-4A49-84CA-CE34491224AD} = {7927CBDC-18DF-4F5C-8DE7-1A86F0FC9E69}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {62A15AF7-67B9-4110-B55B-31A28E7A2619}
