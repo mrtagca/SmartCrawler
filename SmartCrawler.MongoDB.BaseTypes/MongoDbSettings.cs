@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SmartCrawler.DbAccess.MongoDB.Configuration
+namespace SmartCrawler.MongoDB.BaseTypes
 {
     public class MongoDbSettings
     {

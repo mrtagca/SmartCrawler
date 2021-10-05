@@ -11,12 +11,12 @@ using System.IO;
 using System.Text;
 using Microsoft.Extensions.Hosting.WindowsServices;
 using System.Configuration;
-using SmartCrawler.RabbitMQ.TestConsumerApplication.Interface;
-using SmartCrawler.DbAccess.MongoDB.Configuration;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
+using SmartCrawler.MongoDB.BaseTypes;
+using SmartCrawler.MongoDB.DAL;
 
 namespace SmartCrawler.RabbitMQ.TestConsumerApplication
 {

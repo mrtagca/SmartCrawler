@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.Hosting;
 using MongoDB.Bson;
 using RabbitMQ.Client.Events;
-using SmartCrawler.RabbitMQ.TestConsumerApplication.Interface;
-using SmartCrawler.RabbitMQ.TestConsumerApplication.Types;
+using SmartCrawler.MongoDB.DAL;
+using SmartCrawler.MongoDbEntities;
 using SmartCrawler.RabbitMQ.Types;
 using System;
 using System.Collections.Generic;
@@ -25,7 +25,27 @@ namespace SmartCrawler.RabbitMQ.TestConsumerApplication.Workers
 
             Products pr = new Products();
             pr.Id = ObjectId.GenerateNewId().ToString();
-            pr.ProductName = "Test 2";
+            pr.StoreName = "Teknosa";
+            pr.Category = "Telefon";
+            pr.SubCategory = "Cep Telefonu";
+            pr.ThirdCategory = "Android Telefon";
+            pr.Brand = "Samsung";
+            pr.SKUName = "Samsung Galaxy Note20 Bronze Akıllı Telefon";
+            pr.Price = 8499;
+            pr.DiscountDescription = "%9 İndirim";
+            pr.ProductURL = "https://www.teknosa.com/samsung-galaxy-note20-bronze-akilli-telefon-p-125077713";
+
+            pr.ProductPhotos = new List<string>()
+            {
+                "https://reimg-teknosa-cloud-prod.mncdn.com/mnresize/600/600/productimage/125077713/125077713_0_MC/47005976.jpg",
+"https://reimg-teknosa-cloud-prod.mncdn.com/mnresize/600/600/productimage/125077713/125077713_1_MC/47005979.jpg",
+"https://reimg-teknosa-cloud-prod.mncdn.com/mnresize/600/600/productimage/125077713/125077713_2_MC/47005984.jpg",
+"https://reimg-teknosa-cloud-prod.mncdn.com/mnresize/600/600/productimage/125077713/125077713_3_MC/47005988.jpg",
+"https://reimg-teknosa-cloud-prod.mncdn.com/mnresize/600/600/productimage/125077713/125077713_4_MC/47005995.jpg",
+"https://reimg-teknosa-cloud-prod.mncdn.com/mnresize/600/600/productimage/125077713/125077713_5_MC/47006017.jpg",
+"https://reimg-teknosa-cloud-prod.mncdn.com/mnresize/600/600/productimage/125077713/125077713_6_MC/47006034.jpg",
+"https://reimg-teknosa-cloud-prod.mncdn.com/mnresize/600/600/productimage/125077713/125077713_7_MC/47006044.jpg"
+            };
 
             productDal.AddAsync(pr);
 

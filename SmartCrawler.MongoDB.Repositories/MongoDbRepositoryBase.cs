@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
 using MongoDB.Driver;
-using SmartCrawler.DbAccess.MongoDB.Configuration;
-using SmartCrawler.DbAccess.MongoDB.Entities;
+using SmartCrawler.MongoDB.BaseTypes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +8,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartCrawler.DbAccess.MongoDB.Repositories
+namespace SmartCrawler.MongoDB.Repositories
 {
     public abstract class MongoDbRepositoryBase<T> : IRepository<T, string> where T : MongoDbEntity, new()
     {

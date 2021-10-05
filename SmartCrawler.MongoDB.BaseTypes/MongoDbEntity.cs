@@ -1,11 +1,10 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-using SmartCrawler.DbAccess.MongoDB.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SmartCrawler.DbAccess.MongoDB.Entities
+namespace SmartCrawler.MongoDB.BaseTypes
 {
     public abstract class MongoDbEntity : IEntity<string>
     {
@@ -17,6 +16,6 @@ namespace SmartCrawler.DbAccess.MongoDB.Entities
         [BsonRepresentation(BsonType.DateTime)]
         [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
         [BsonElement(Order = 101)]
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow.AddHours(3);
     }
 }

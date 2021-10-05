@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SmartCrawler.DbAccess.MongoDB\SmartCrawler.DbAccess.MongoDB.csproj" />
+    <ProjectReference Include="..\SmartCrawler.MongoDB.DAL\SmartCrawler.MongoDB.DAL.csproj" />
     <ProjectReference Include="..\SmartCrawler.RabbitMQ\SmartCrawler.RabbitMQ.csproj" />
   </ItemGroup>
 

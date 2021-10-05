@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SmartCrawler.DbAccess.MongoDB.Interfaces
+namespace SmartCrawler.MongoDB.BaseTypes
 {
     public interface IEntity
     {

@@ -1,4 +1,4 @@
-﻿using SmartCrawler.DbAccess.MongoDB.Interfaces;
+﻿using SmartCrawler.MongoDB.BaseTypes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartCrawler.DbAccess.MongoDB.Repositories
+namespace SmartCrawler.MongoDB.Repositories
 {
     public interface IRepository<T, in TKey> where T : class, IEntity<TKey>, new() where TKey : IEquatable<TKey>
     {
