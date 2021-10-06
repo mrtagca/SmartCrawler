@@ -23,21 +23,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DB", "DB", "{7927CBDC-18DF-
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Interfaces", "Interfaces", "{F425C37C-1288-4033-A6AA-6291A9D3944B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartCrawler.MongoDB.DAL", "SmartCrawler.MongoDB.DAL\SmartCrawler.MongoDB.DAL.csproj", "{255EAD1B-4F4B-402A-BBA4-3F0C6CCC3A89}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartCrawler.MongoDB.DAL", "SmartCrawler.MongoDB.DAL\SmartCrawler.MongoDB.DAL.csproj", "{255EAD1B-4F4B-402A-BBA4-3F0C6CCC3A89}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Types", "Types", "{250D9F62-F979-4DBB-BDAD-23A9F897581A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Entities", "Entities", "{434C830F-0637-4ACE-834D-BB79931AF0AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartCrawler.MongoDbEntities", "SmartCrawler.MongoDbEntities\SmartCrawler.MongoDbEntities.csproj", "{22A7CDFB-CBF5-44BF-A8A0-FBD517C0C605}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartCrawler.MongoDbEntities", "SmartCrawler.MongoDbEntities\SmartCrawler.MongoDbEntities.csproj", "{22A7CDFB-CBF5-44BF-A8A0-FBD517C0C605}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BaseTypes", "BaseTypes", "{D012F551-02F8-4190-81EE-3EEEE5B1AFC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartCrawler.MongoDB.BaseTypes", "SmartCrawler.MongoDB.BaseTypes\SmartCrawler.MongoDB.BaseTypes.csproj", "{79806A18-2EAD-43DF-892E-AD6CFD8CE01F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartCrawler.MongoDB.BaseTypes", "SmartCrawler.MongoDB.BaseTypes\SmartCrawler.MongoDB.BaseTypes.csproj", "{79806A18-2EAD-43DF-892E-AD6CFD8CE01F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repositories", "Repositories", "{E28ADA20-053E-4318-B344-88C85CC93346}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartCrawler.MongoDB.Repositories", "SmartCrawler.MongoDB.Repositories\SmartCrawler.MongoDB.Repositories.csproj", "{A705894E-6AB6-4816-9286-0BD183C120E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartCrawler.MongoDB.Repositories", "SmartCrawler.MongoDB.Repositories\SmartCrawler.MongoDB.Repositories.csproj", "{A705894E-6AB6-4816-9286-0BD183C120E3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{27561185-7077-4AB4-BD7C-79EDF19486F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartCrawler.Distribute.ProductURLQueues", "SmartCrawler.Distribute.ProductURLQueues\SmartCrawler.Distribute.ProductURLQueues.csproj", "{28886F56-69EB-45AF-B70C-763A20FBE440}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,6 +81,10 @@ Global
 		{A705894E-6AB6-4816-9286-0BD183C120E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A705894E-6AB6-4816-9286-0BD183C120E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A705894E-6AB6-4816-9286-0BD183C120E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28886F56-69EB-45AF-B70C-763A20FBE440}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28886F56-69EB-45AF-B70C-763A20FBE440}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28886F56-69EB-45AF-B70C-763A20FBE440}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28886F56-69EB-45AF-B70C-763A20FBE440}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -94,6 +102,7 @@ Global
 		{D012F551-02F8-4190-81EE-3EEEE5B1AFC7} = {250D9F62-F979-4DBB-BDAD-23A9F897581A}
 		{79806A18-2EAD-43DF-892E-AD6CFD8CE01F} = {D012F551-02F8-4190-81EE-3EEEE5B1AFC7}
 		{A705894E-6AB6-4816-9286-0BD183C120E3} = {E28ADA20-053E-4318-B344-88C85CC93346}
+		{28886F56-69EB-45AF-B70C-763A20FBE440} = {27561185-7077-4AB4-BD7C-79EDF19486F1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {62A15AF7-67B9-4110-B55B-31A28E7A2619}
