@@ -14,6 +14,8 @@ namespace SmartCrawler.MongoDB.Repositories
         Task<T> GetAsync(Expression<Func<T, bool>> predicate);
         Task<T> GetByIdAsync(TKey id);
         Task<T> AddAsync(T entity);
+        T Add(T entity);
+        bool AddRange(IEnumerable<T> entities);
         Task<bool> AddRangeAsync(IEnumerable<T> entities);
         Task<T> UpdateAsync(TKey id, T entity);
         Task<T> UpdateAsync(T entity, Expression<Func<T, bool>> predicate);

@@ -9,12 +9,16 @@
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="5.0.1" />
+    <PackageReference Include="RabbitMQ.Client" Version="6.2.2" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SmartCrawler.HtmlParser.Repositories\SmartCrawler.HtmlParser.Repositories.csproj" />
     <ProjectReference Include="..\SmartCrawler.MongoDB.BaseTypes\SmartCrawler.MongoDB.BaseTypes.csproj" />
     <ProjectReference Include="..\SmartCrawler.MongoDB.DAL\SmartCrawler.MongoDB.DAL.csproj" />
     <ProjectReference Include="..\SmartCrawler.RabbitMQ\SmartCrawler.RabbitMQ.csproj" />
+    <ProjectReference Include="..\SmartCrawler.Requestor.BaseTypes\SmartCrawler.Requestor.BaseTypes.csproj" />
+    <ProjectReference Include="..\SmartCrawler.Requestor\SmartCrawler.Requestor.csproj" />
   </ItemGroup>
 
 </Project>

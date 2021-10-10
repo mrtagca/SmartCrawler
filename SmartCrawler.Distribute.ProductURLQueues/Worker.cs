@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Hosting;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 using SmartCrawler.MongoDB.DAL;
 using SmartCrawler.MongoDbEntities;
 using SmartCrawler.RabbitMQ;
@@ -14,13 +15,18 @@ namespace SmartCrawler.Distribute.ProductURLQueues
 {
     public class Worker : BackgroundService
     {
+        public static IConfigurationRoot Configuration { get; set; }
         private readonly IProductDal productDal;
-
         public List<RabbitMQBasicPublishModel> publishModels = new List<RabbitMQBasicPublishModel>();
         public List<Products> products;
         public List<string> stores;
         public Worker(IProductDal productDal)
         {
+            var builder = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json");
+
+            Configuration = builder.Build();
+
             this.productDal = productDal;
 
             products = productDal.Get().ToList();
@@ -32,7 +38,7 @@ namespace SmartCrawler.Distribute.ProductURLQueues
                 RabbitMQBasicPublishModel basicPublishModel = new RabbitMQBasicPublishModel();
                 basicPublishModel.QueueConfiguration = new QueueConfiguration()
                 {
-                    HostName = "localhost",
+                    HostName = Configuration.GetSection("WorkerSettings").GetSection("QueueHost").Value,
                     QueueName = store + "_ProductUrls_Queue",
                     Durable = false,
                     Exclusive = false,
@@ -52,35 +58,41 @@ namespace SmartCrawler.Distribute.ProductURLQueues
                 publishModels.Add(basicPublishModel);
             }
         }
-        protected override Task ExecuteAsync(CancellationToken stoppingToken)
+        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            while (true)
+            ParallelOptions parallelOptions = new ParallelOptions();
+            parallelOptions.MaxDegreeOfParallelism = Environment.ProcessorCount;
+
+
+            while (!stoppingToken.IsCancellationRequested)
             {
+                int i = 0;
+
                 foreach (RabbitMQBasicPublishModel pm in publishModels)
                 {
                     foreach (var store in stores)
                     {
                         if (pm.QueueConfiguration.QueueName.Contains(store))
                         {
-                            foreach (string pr in products.Where(x=>x.StoreName == store).Select(x=>x.ProductURL).Distinct().ToList())
+                            foreach (string pr in products.Where(x => x.StoreName == store).Select(x => x.ProductURL).Distinct().ToList())
                             {
                                 pm.QueueMessage = pr;
-                                PublishBasic(pm);
-                            }  
+                                RabbitMQPublisherComponent.BasicPublish(pm);
+                                i++;
+
+                            }
+                            Console.WriteLine(i + " " + store + " URL eklendi => " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss"));
                         }
                     }
+
                 }
-                Console.WriteLine("Program 1 dakika bekletiliyor..");
-                Thread.Sleep(5000);
+
+                int waitTime = int.Parse(Configuration.GetSection("WorkerSettings").GetSection("ReadInterval").Value);
+                Console.WriteLine("Worker " + waitTime / 60000 + " dakika bekletiliyor.");
+                //Thread.Sleep(waitTime);
+                await Task.Delay(waitTime,stoppingToken);
             }
-            
+
         }
-
-        public static void PublishBasic(RabbitMQBasicPublishModel rabbitMQBasicPublishModel)
-        {
-            RabbitMQPublisherComponent.BasicPublish(rabbitMQBasicPublishModel);
-        }
-
-
     }
 }

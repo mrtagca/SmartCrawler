@@ -40,11 +40,39 @@ namespace SmartCrawler.MongoDB.Repositories
             return Collection.Find(x => x.Id == id).FirstOrDefaultAsync();
         }
 
+        public virtual T Add(T entity)
+        {
+            try
+            {
+                var options = new InsertOneOptions { BypassDocumentValidation = false };
+                Collection.InsertOne(entity, options);
+                return entity;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
         public virtual async Task<T> AddAsync(T entity)
         {
             var options = new InsertOneOptions { BypassDocumentValidation = false };
             await Collection.InsertOneAsync(entity, options);
             return entity;
+        }
+
+        public virtual bool AddRange(IEnumerable<T> entities)
+        {
+            try
+            {
+                var options = new BulkWriteOptions { IsOrdered = false, BypassDocumentValidation = false };
+                BulkWriteResult<T> bulkWriteResult = Collection.BulkWrite((IEnumerable<WriteModel<T>>)entities, options);
+                return (bulkWriteResult).IsAcknowledged;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         public virtual async Task<bool> AddRangeAsync(IEnumerable<T> entities)

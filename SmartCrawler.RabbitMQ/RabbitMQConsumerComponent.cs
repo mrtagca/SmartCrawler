@@ -42,7 +42,6 @@ namespace SmartCrawler.RabbitMQ
                 autoAck: rabbitMQBasicConsumeModel.BasicConsumeConfiguration.AutoAck,
                 consumer: consumer
                 );
-
         //};
     }
 

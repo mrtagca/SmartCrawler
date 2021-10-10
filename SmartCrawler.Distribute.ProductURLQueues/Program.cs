@@ -16,10 +16,11 @@ namespace SmartCrawler.Distribute.ProductURLQueues
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
           Host.CreateDefaultBuilder(args)
+            .UseWindowsService()
               .ConfigureServices((hostContext, services) =>
               {
                   var config = new ConfigurationBuilder()
-                               .AddJsonFile("appsettings.json", optional: false)
+                               .AddJsonFile("appsettings.json")
                                .Build();
 
                   string con = config.GetSection("MongoDbSettings").GetSection("ConnectionString").Value;
